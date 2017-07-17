@@ -14,11 +14,11 @@ app.use(cors());
 app.use(express.static(__dirname + "/public"));
 app.get('/new/:urlToShorten(*)', (req, res, next)=>{
   // ES5(var urlToShorten = req.params.urlToShorten)
-    var { urlToShorten } = req.params;
+  var { urlToShorten } = req.params;
   var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
   var regex = expression;
   if(regex.test(urlToShorten)===true){
-    var short = Math.floor(Math.random()*100000).toString()
+    var short = Math.floor(Math.random()*100000).toString();
     var data = new shortUrl({
       originalUrl: urlToShorten,
       shorterUrl: short
