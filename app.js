@@ -29,7 +29,7 @@ app.get('/new/:urlToShorten(*)', (req, res, next)=>{
         return res.send("Error saving to database");
       }
     });
-    return res.json({data});
+    return res.json(data);
   }
   else{
     var data = new shortUrl({
@@ -39,8 +39,17 @@ app.get('/new/:urlToShorten(*)', (req, res, next)=>{
     return res.json(data);
   }
   console.log(urlToShorten);
-  
 }); 
+
+//query datese and forward to orignalUrl
+app.get("/:urlToForward", (req, res, next)=> {
+  var shorterUrl = req.params.urlToForward;
+  shortUrl.findOne({'shorterUrl': shorterUrl}), (err,data) =>{
+    if(err) return res.send('Error reading database');
+    var re = new RegExp("^(http|https)://", "i");
+    
+  }
+})
 
 app.listen(process.env.PORT || 3000, () => {
   console.log("Everything is working");
