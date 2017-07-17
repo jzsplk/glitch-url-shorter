@@ -13,6 +13,7 @@ app.get('/new/:urlToShorten(*)', (req, res, next)=>{
   // ES5(var urlToShorten = req.params.urlToShorten)
     var { urlToShorten } = req.params;
   console.log(urlToShorten);
+  return res.json({urlToShorten});
 }); 
 
 app.listen(process.env.PORT || 3000, () => {
