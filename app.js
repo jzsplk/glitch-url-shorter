@@ -3,6 +3,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var cors = require("cors");
 var mongoose = require("mongoose");
+//const shortUrl = require("./models/shortUrl");
 
 var app = module.exports = express();
 app.use(bodyParser.json());
