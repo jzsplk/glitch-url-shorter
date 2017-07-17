@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="shortUrlApp">
   <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>URL Shortner Microservice</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <script src="js/app.js"> </script>
   </head>
   
   <body class="text-center">
@@ -13,10 +14,10 @@
       <h3> URL Shortner Microservice</h3>
       <h4> <a href="www.freecodecamo.com" target="blank">FreeCodeCamp: APIs and Microservice</a></h4>
     </header>
-    <section>
+    <section ng-controller="shorUrlCtrl">
       {{urlToShorten}}
       <input placeholder="EnterUrl" ng-model="urlToShorten"> 
-      <a class="btn btn-primary">Get ShortUrl</a>
+      <a class="btn btn-primary" ng-href="/new/{{urlToShorten}}">Get ShortUrl</a>
     </section>
     
     
