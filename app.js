@@ -8,27 +8,11 @@ var app = module.exports = express();
 app.use(bodyParser.json());
 app.use(cors());
 //get call to return JSON that format natural and unix data
-app.get('/dateValues/:dateVal', function(req, res, next){
-    console.log('url works');
-    var dateVal = req.params.dateVal;
-    var dataFormattingOptions = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    };
-    
-    if(isNaN(dateVal)){
-        var naturalDate = new Date(dateVal);
-        naturalDate = naturalDate.toLocaleDateString("en-us", dataFormattingOptions);
-        var unixDate = new Date(dateVal).getTime()/1000;
-    }
-    else{
-        var unixDate = dateVal;
-        var naturalDate = new Date(dateVal *1000);
-        naturalDate = naturalDate.toLocaleDateString("en-us", dataFormattingOptions);
-    }
-    res.json({unix: unixDate, natural: naturalDate});
-});
+app.get('/new/:urlToShorten(*)', (req, res, next)=>{
+  // ES5(var urlToShorten = req.params.urlToShorten)
+    var { urlToShorten } = req.params;
+  console.log(urlToShorten);
+}); 
 
 app.listen(process.env.PORT || 3000, () => {
   console.log("Everything is working");
