@@ -3,7 +3,9 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var cors = require("cors");
 var mongoose = require("mongoose");
-//const shortUrl = require("./models/shortUrl");
+const shortUrl = require("./models/shortUrl");
+//connect to mongodb
+mongoose.connect(process.env.MONGODB_URI || 'mongodb:')
 
 var app = module.exports = express();
 app.use(bodyParser.json());
