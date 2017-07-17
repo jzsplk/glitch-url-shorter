@@ -32,10 +32,14 @@ app.get('/new/:urlToShorten(*)', (req, res, next)=>{
     return res.json({data});
   }
   else{
-    return res.json({urlToShorten: "Failed"});
+    var data = new shortUrl({
+      orignalUrl: "urlToShorten do not match standerd format",
+      shorterUrl: "InvalidURL"
+    });
+    return res.json(data);
   }
   console.log(urlToShorten);
-  return res.json({urlToShorten});
+  
 }); 
 
 app.listen(process.env.PORT || 3000, () => {
