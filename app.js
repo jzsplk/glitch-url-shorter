@@ -8,6 +8,7 @@ var app = module.exports = express();
 app.use(bodyParser.json());
 app.use(cors());
 //get call to return JSON that format natural and unix data
+app.use(express.static(__dirname + "/public"));
 app.get('/new/:urlToShorten(*)', (req, res, next)=>{
   // ES5(var urlToShorten = req.params.urlToShorten)
     var { urlToShorten } = req.params;
