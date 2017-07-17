@@ -5,7 +5,7 @@ var cors = require("cors");
 var mongoose = require("mongoose");
 const shortUrl = require("./models/shortUrl");
 //connect to mongodb
-mongoose.connect(process.env.MONGODB_URI || 'mongodb:')
+mongoose.connect('mongodb://jzsplk:123@ds153752.mlab.com:53752/xc');
 
 var app = module.exports = express();
 app.use(bodyParser.json());
