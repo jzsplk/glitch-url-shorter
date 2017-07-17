@@ -5,6 +5,7 @@
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>URL Shortner Microservice</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
   </head>
   
   <body class="text-center">
@@ -13,9 +14,11 @@
       <h4> <a href="www.freecodecamo.com" target="blank">FreeCodeCamp: APIs and Microservice</a></h4>
     </header>
     <section>
-      <input placeholder="EnterUrl"> 
+      {{urlToShorten}}
+      <input placeholder="EnterUrl" ng-model="urlToShorten"> 
       <a class="btn btn-primary">Get ShortUrl</a>
     </section>
+    
     
     
   </body>
