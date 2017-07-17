@@ -2,6 +2,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var cors = require("cors");
+var mongoose = require("mongoose");
 
 var app = module.exports = express();
 app.use(bodyParser.json());
@@ -29,6 +30,6 @@ app.get('/dateValues/:dateVal', function(req, res, next){
     res.json({unix: unixDate, natural: naturalDate});
 });
 
-app.listen(3000, function(){
-    console.log("It's  working");
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Everything is working");
 });
