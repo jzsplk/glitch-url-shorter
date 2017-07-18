@@ -5,8 +5,31 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const shortUrl = require("./models/shortUrl");
 //connect to mongodb
-const url = process.env.MONGOLAB_URI;
-mongoose.connect('mongodb://jzsplk:123@ds153752.mlab.com:53752/xc');
+//const url = process.env.MONGOLAB_URI;
+//mongoose.connect('mongodb://jzsplk:123@ds153752.mlab.com:53752/xc');
+
+var url = '127.0.0.1:27017/' + process.env.OPENSHIFT_APP_NAME;
+
+// if OPENSHIFT env variables are present, use the available connection info:
+if (process.env.OPENSHIFT_MONGODB_DB_URL) {
+    url = process.env.OPENSHIFT_MONGODB_DB_URL +
+    process.env.OPENSHIFT_APP_NAME;
+}
+
+// Connect to mongodb
+var connect = function () {
+    mongoose.connect(url);
+};
+connect();
+
+var db = mongoose.connection;
+
+db.on('error', function(error){
+    console.log("Error loading the db - "+ error);
+});
+
+db.on('disconnected', connect);
+
 
 
 const app = express();
