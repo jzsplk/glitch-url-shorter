@@ -44,15 +44,16 @@ app.get('/new/:urlToShorten(*)', (req, res, next)=>{
 //query datese and forward to orignalUrl
 app.get('/:urlToForward', (req, res, next) => {
   var shorterUrl = req.params.urlToForward;
+  console.log(shorterUrl);
   shortUrl.findOne({'shorterUrl': shorterUrl}), (err,data) =>{
     if(err) return res.send('Error reading database');
     var re = new RegExp("^(http|https)://", "i");
     var strToCheck = data.originalUrl;
     if(re.test(strToCheck)){
-      res.json("af")
+      console.log("1")
     }
     else{
-      res.json("ad");
+      console.log('2')
     }
   }
 })
