@@ -50,10 +50,10 @@ app.get('/:urlToForward', (req, res, next) => {
     var re = new RegExp("^(http|https)://", "i");
     var strToCheck = data.originalUrl;
     if(re.test(strToCheck)){
-      console.log("1")
+      res.json(data)
     }
     else{
-      console.log('2')
+      res.json(data)
     }
   }
 })
