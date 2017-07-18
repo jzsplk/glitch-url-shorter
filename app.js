@@ -38,7 +38,6 @@ app.get('/new/:urlToShorten(*)', (req, res, next)=>{
     });
     return res.json(data);
   }
-  console.log(urlToShorten);
 }); 
 
 //query datese and forward to orignalUrl
@@ -50,10 +49,10 @@ app.get('/:urlToForward', (req, res, next) => {
     var re = new RegExp("^(http|https)://", "i");
     var strToCheck = data.originalUrl;
     if(re.test(strToCheck)){
-      res.json(data)
+      res.json('data')
     }
     else{
-      res.json(data)
+      res.json('ata')
     }
   }
 })
