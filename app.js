@@ -42,17 +42,17 @@ app.get('/new/:urlToShorten(*)', (req, res, next)=>{
 }); 
 
 //query datese and forward to orignalUrl
-app.get("/:urlToForward", (req, res, next)=> {
+app.get('/:urlToForward', (req, res, next) => {
   var shorterUrl = req.params.urlToForward;
   shortUrl.findOne({'shorterUrl': shorterUrl}), (err,data) =>{
     if(err) return res.send('Error reading database');
     var re = new RegExp("^(http|https)://", "i");
     var strToCheck = data.originalUrl;
     if(re.test(strToCheck)){
-      res.redirect(301, data.originalUrl);
+      res.json("af")
     }
     else{
-      re.redirect(301, 'http://' + data.originalUrl);
+      res.json("ad");
     }
   }
 })
