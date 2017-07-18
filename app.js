@@ -44,18 +44,19 @@ app.get('/new/:urlToShorten(*)', (req, res, next)=>{
 app.get('/:urlToForward', (req, res, next) => {
   var shorterUrl = req.params.urlToForward;
   console.log(shorterUrl);
-  shortUrl.findOne({'shorterUrl': shorterUrl}), (err,data) =>{
+  shortUrl.findOne({'shorterUrl': shorterUrl}, (err,data) =>{
     if(err) return res.send('Error reading database');
     var re = new RegExp("^(http|https)://", "i");
     var strToCheck = data.originalUrl;
     if(re.test(strToCheck)){
-      res.json('data')
+      res.redirect(301, data.originalUrl);
     }
     else{
-      res.json('ata')
+      res.redirect(301, 'https://' + data.originalUrl);
     }
-  }
-})
+  })
+});
+
 
 app.listen(process.env.PORT || 3000, () => {
   console.log("Everything is working");
